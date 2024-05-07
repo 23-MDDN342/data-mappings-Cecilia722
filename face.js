@@ -41,6 +41,7 @@ function Face() {
   this.chinColour = [153, 153, 51]
   this.lipColour = [136, 68, 68]
   this.eyebrowColour = [119, 85, 17]
+  ellipse(0,0,10,10)
 
   /*
    * Draw the face with position lists that include:
