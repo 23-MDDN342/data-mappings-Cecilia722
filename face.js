@@ -30,6 +30,19 @@ function segment_average(segment) {
 
 // This where you define your own face object
 function Face() {
+
+  let color_DarkGreen = color("#42421c")
+let color_ResedaGreen = color("#84805a")
+let color_Tan = color("#d4b48c")
+let color_IndianRed = color("#bd6868")
+let color_Carmine = color("#950a1e")
+let color_RoseWood = color("#5f0d11")
+let color_Brown = color("#1f0a0b")
+let color_White = color("#fdf5e5")
+let color_Yellow = color("#dbb447")
+let color_PeachYellow = color("#edd596")
+let face_Ypoint=1.9
+
   // these are state variables for a face
   // (your variables should be different!)
   this.detailColour = [204, 136, 17];
@@ -40,8 +53,9 @@ function Face() {
 
   this.chinColour = [153, 153, 51]
   this.lipColour = [136, 68, 68]
-  this.eyebrowColour = [119, 85, 17]
-  ellipse(0,0,10,10)
+  this.eyebrowColour = color_Brown
+
+
 
   /*
    * Draw the face with position lists that include:
@@ -52,16 +66,40 @@ function Face() {
     console.log()
     // head
     ellipseMode(CENTER);
-    stroke(stroke_color);
-    fill(this.mainColour);
-    ellipse(segment_average(positions.chin)[0], 0, 3, 4);
-    noStroke();
+    // triangleMode(CENTER)
+    stroke(color_Carmine);
+    strokeWeight(2)
+    strokeJoin(ROUND)
+    fill(color_Carmine);
+    
+
+
+    // ellipse(segment_average(positions.chin)[0], 0, 3, 4);
+
+    triangle(-segment_average(positions.chin)[1]*3,  -face_Ypoint, segment_average(positions.chin)[1]*3,-face_Ypoint,   0,segment_average(positions.chin)[0]*3);
+   
+   
+
 
 
     // mouth
-    fill(this.detailColour);
-    ellipse(segment_average(positions.bottom_lip)[0], segment_average(positions.bottom_lip)[1], 1.36, 0.25 * this.mouth_size);
+ 
+    // ellipse(segment_average(positions.bottom_lip)[0], segment_average(positions.bottom_lip)[1], 1.36, 0.25 * this.mouth_size);
 
+    strokeWeight(0.3)
+    stroke(color_IndianRed)
+    fill(color_IndianRed);
+
+
+    beginShape();
+
+
+    arc(segment_average(positions.top_lip)[0], segment_average(positions.top_lip)[1], 1, 1, 0, 180);
+    line(0.5+segment_average(positions.bottom_lip)[0],  segment_average(positions.top_lip)[1],-0.5+segment_average(positions.bottom_lip)[0],  segment_average(positions.top_lip)[1])
+    endShape();
+
+
+    noStroke();
     // eyebrows
     fill( this.eyebrowColour);
     stroke( this.eyebrowColour);
