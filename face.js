@@ -76,7 +76,8 @@ let face_Ypoint=1.9
 
     // ellipse(segment_average(positions.chin)[0], 0, 3, 4);
 
-    triangle(-segment_average(positions.chin)[1]*3,  -face_Ypoint, segment_average(positions.chin)[1]*3,-face_Ypoint,   0,segment_average(positions.chin)[0]*3);
+    triangle(-segment_average(positions.chin)[1]*3,  -face_Ypoint, segment_average(positions.chin)[1]*3,-face_Ypoint,   0,
+    segment_average(positions.chin)[1]*3);
    
    
 
@@ -98,13 +99,52 @@ let face_Ypoint=1.9
     arc(segment_average(positions.top_lip)[0], segment_average(positions.top_lip)[1], 1, 1, 0, 180);
     line(0.5+segment_average(positions.bottom_lip)[0],  segment_average(positions.top_lip)[1],-0.5+segment_average(positions.bottom_lip)[0],  segment_average(positions.top_lip)[1])
     endShape();
+    
+push()
+    fill(color_DarkGreen)
+    stroke(color_DarkGreen)
+ let heart_H=-segment_average(positions.left_eyebrow)[1]-segment_average(positions.left_eyebrow)[1]/2
+ let heart_W=segment_average(positions.right_eyebrow)[1]*2
+
+this.leafhight = -segment_average(positions.nose_bridge)[1]*6
+this.leaf_Xpoints_fac=0
+this.leaf_Ypoints_fac=0
+this.leaf_rotation= segment_average(positions.nose_tip)[1]*300
 
 
-    noStroke();
+translate(0,-2.9)
+
+ quad(this.leaf_Xpoints_fac, -this.leafhight+this.leaf_Ypoints_fac, this.leaf_Xpoints_fac+0.5, this.leaf_Ypoints_fac-1, this.leaf_Xpoints_fac, this.leaf_Ypoints_fac, this.leaf_Xpoints_fac-0.5, this.leaf_Ypoints_fac-1);
+
+
+ rotate(this.leaf_rotation)
+ quad(this.leaf_Xpoints_fac, -this.leafhight+this.leaf_Ypoints_fac, this.leaf_Xpoints_fac+0.5, this.leaf_Ypoints_fac-1, this.leaf_Xpoints_fac, this.leaf_Ypoints_fac, this.leaf_Xpoints_fac-0.5, this.leaf_Ypoints_fac-1);
+    
+rotate(-2*this.leaf_rotation)
+ quad(this.leaf_Xpoints_fac, -this.leafhight+this.leaf_Ypoints_fac, this.leaf_Xpoints_fac+0.5, this.leaf_Ypoints_fac-1, this.leaf_Xpoints_fac, this.leaf_Ypoints_fac, this.leaf_Xpoints_fac-0.5, this.leaf_Ypoints_fac-1);
+    
+ pop()
+ 
+ 
+
+ let left_eye_pos = segment_average(positions.left_eye)
+ let right_eye_pos = segment_average(positions.right_eye);
+ let eye_Y_Fac=0.5
+ fill(color_Brown);
+ noStroke()
+
+
+
+
+ ellipse(left_eye_pos[0], left_eye_pos[1]+eye_Y_Fac, 0.5);
+ ellipse(right_eye_pos[0], right_eye_pos[1]+eye_Y_Fac, 0.5);
+
+
+ noStroke();
     // eyebrows
     fill( this.eyebrowColour);
     stroke( this.eyebrowColour);
-    strokeWeight(0.08);
+    strokeWeight(0.12);
     this.draw_segment(positions.left_eyebrow);
     this.draw_segment(positions.right_eyebrow);
 
@@ -125,16 +165,14 @@ let face_Ypoint=1.9
     this.draw_segment(positions.top_lip);
     this.draw_segment(positions.bottom_lip);
 
-    let left_eye_pos = segment_average(positions.left_eye);
-    let right_eye_pos = segment_average(positions.right_eye);
 
     // eyes
     noStroke();
     let curEyeShift = 0.04 * this.eye_shift;
     if(this.num_eyes == 2) {
       fill(this.detailColour);
-      ellipse(left_eye_pos[0], left_eye_pos[1], 0.5, 0.33);
-      ellipse(right_eye_pos[0], right_eye_pos[1], 0.5, 0.33);
+      // ellipse(left_eye_pos[0], left_eye_pos[1], 0.5, 0.33);
+      // ellipse(right_eye_pos[0], right_eye_pos[1], 0.5, 0.33);
 
       // fill(this.mainColour);
       // ellipse(left_eye_pos[0] + curEyeShift, left_eye_pos[1], 0.18);
@@ -157,23 +195,23 @@ let face_Ypoint=1.9
 
   // example of a function *inside* the face object.
   // this draws a segment, and do_loop will connect the ends if true
-  this.draw_segment = function(segment, do_loop) {
-    for(let i=0; i<segment.length; i++) {
-        let px = segment[i][0];
-        let py = segment[i][1];
-        ellipse(px, py, 0.1);
-        if(i < segment.length - 1) {
-          let nx = segment[i+1][0];
-          let ny = segment[i+1][1];
-          line(px, py, nx, ny);
-        }
-        else if(do_loop) {
-          let nx = segment[0][0];
-          let ny = segment[0][1];
-          line(px, py, nx, ny);
-        }
-    }
-  };
+  // this.draw_segment = function(segment, do_loop) {
+  //   for(let i=0; i<segment.length; i++) {
+  //       let px = segment[i][0];
+  //       let py = segment[i][1];
+  //       ellipse(px, py, 0.1);
+  //       if(i < segment.length - 1) {
+  //         let nx = segment[i+1][0];
+  //         let ny = segment[i+1][1];
+  //         line(px, py, nx, ny);
+  //       }
+  //       else if(do_loop) {
+  //         let nx = segment[0][0];
+  //         let ny = segment[0][1];
+  //         line(px, py, nx, ny);
+  //       }
+  //   }
+  // };
 
   /* set internal properties based on list numbers 0-100 */
   this.setProperties = function(settings) {
