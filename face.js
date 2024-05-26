@@ -195,23 +195,23 @@ rotate(-2*this.leaf_rotation)
 
   // example of a function *inside* the face object.
   // this draws a segment, and do_loop will connect the ends if true
-  // this.draw_segment = function(segment, do_loop) {
-  //   for(let i=0; i<segment.length; i++) {
-  //       let px = segment[i][0];
-  //       let py = segment[i][1];
-  //       ellipse(px, py, 0.1);
-  //       if(i < segment.length - 1) {
-  //         let nx = segment[i+1][0];
-  //         let ny = segment[i+1][1];
-  //         line(px, py, nx, ny);
-  //       }
-  //       else if(do_loop) {
-  //         let nx = segment[0][0];
-  //         let ny = segment[0][1];
-  //         line(px, py, nx, ny);
-  //       }
-  //   }
-  // };
+  this.draw_segment = function(segment, do_loop) {
+    for(let i=0; i<segment.length; i++) {
+        let px = segment[i][0];
+        let py = segment[i][1];
+        ellipse(px, py, 0.1);
+        if(i < segment.length - 1) {
+          let nx = segment[i+1][0];
+          let ny = segment[i+1][1];
+          line(px, py, nx, ny);
+        }
+        else if(do_loop) {
+          let nx = segment[0][0];
+          let ny = segment[0][1];
+          line(px, py, nx, ny);
+        }
+    }
+  };
 
   /* set internal properties based on list numbers 0-100 */
   this.setProperties = function(settings) {
