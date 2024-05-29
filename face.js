@@ -64,20 +64,44 @@ let face_Ypoint=1.9
     ellipseMode(CENTER);
     // triangleMode(CENTER)
     stroke(color_Carmine);
-    strokeWeight(2)
+    
+    strokeWeight(1)
     strokeJoin(ROUND)
     fill(color_Carmine);
     
+this. strawberry_forehead_Y=positions.chin[8][1]-3.3
+this.strawberry_forehead_Y3_fac=-2.8
+this.strawberry_forehead_Y2=positions.chin[11][1]-2.5
+this. strawberry_chain_Y=positions.chin[8][1]+0.2
 
-
-    // ellipse(segment_average(positions.chin)[0], 0, 3, 4);
-
-    triangle(-segment_average(positions.chin)[1]*3,  -face_Ypoint, segment_average(positions.chin)[1]*3,-face_Ypoint,   0,
-    segment_average(positions.chin)[1]*3);
    
-   
+    beginShape();
 
 
+    curveVertex(positions.chin[5][0],  positions.chin[5][1]+this.strawberry_forehead_Y3_fac,  )
+
+      curveVertex(positions.chin[8][0],  this. strawberry_forehead_Y, )
+      curveVertex(positions.chin[11][0], this.strawberry_forehead_Y2,)
+
+      curveVertex(positions.chin[15][0],  positions.chin[15][1],)
+      curveVertex(positions.chin[12][0],  positions.chin[12][1],  )
+
+      curveVertex(positions.chin[8][0],  this. strawberry_chain_Y, )
+
+      curveVertex(positions.chin[4][0],  positions.chin[4][1],  )
+      curveVertex(positions.chin[1][0],  positions.chin[1][1],  )
+
+      curveVertex(positions.chin[5][0],  this.strawberry_forehead_Y2,  )
+      
+
+      curveVertex(positions.chin[8][0],  this. strawberry_forehead_Y, )
+  
+
+
+      curveVertex(positions.chin[11][0],  positions.chin[11][1]+this.strawberry_forehead_Y3_fac,)
+  
+
+      endShape();
 
   
 
@@ -222,6 +246,9 @@ pop()
 
     this.drawEyebrowPips_left (positions.left_eyebrow);
     this.drawEyebrowPips_right(positions.right_eyebrow);
+
+    this.draw_segment(positions.left_eyebrow);
+    this.draw_segment(positions.right_eyebrow);
 pop()
 strokeWeight(0.01);
     // draw the chin segment using points
@@ -305,7 +332,7 @@ this.brow_angle=40
         push()
         translate(px,py)
  rotate(-this.brow_angle)
- scale(1.5)
+
         bezier(0 - this.seed_SizeX / 2, 0 + this.seed_SizeY / 2,
        0- this.seed_SizeX * 2, 0- this.seed_SizeY,
         0 + this.seed_SizeX, 0- this.seed_SizeY,
@@ -319,14 +346,15 @@ this.brow_angle=40
   this.drawEyebrowPips_right = function(segment) {
     for(let i=0; i<segment.length-4; i++) {
         let px = segment[i][0];
-        let py = segment[i][1]+1
+        let py = segment[i][1]+-0.1+1
 
         fill(color_Yellow)
         // ellipse(px, py, 0.1);
         push()
         translate(px,py)
+
  rotate(this.brow_angle)
-       scale(1.5)
+
         bezier(0 - this.seed_SizeX / 2, 0 + this.seed_SizeY / 2,
        0- this.seed_SizeX * 2, 0- this.seed_SizeY,
         0 + this.seed_SizeX, 0- this.seed_SizeY,
