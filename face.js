@@ -57,11 +57,7 @@ let face_Ypoint=1.9
 
 
 
-  /*
-   * Draw the face with position lists that include:
-   *    chin, right_eye, left_eye, right_eyebrow, left_eyebrow
-   *    bottom_lip, top_lip, nose_tip, nose_bridge, 
-   */  
+ 
   this.draw = function(positions) {
     console.log()
     // head
@@ -143,7 +139,7 @@ quad(this.leaf_Xpoints_fac, -this.leafhight*2,
    this.seed_x = segment_average(positions.left_eye)[0]/100
    this.seed_y = segment_average(positions.left_eye)[1]/100-1
    noStroke()
-   fill(color_Yellow)
+   fill(color_RoseWood)
     translate(0,0)
    for (let i = 0; i < this.seed_Number; i++) {
      
@@ -221,6 +217,7 @@ pop()
     fill( color_Yellow);
     stroke(color_Yellow);
     strokeWeight(0.01);
+    scale(1)
 
 
     this.drawEyebrowPips_left (positions.left_eyebrow);
@@ -316,7 +313,7 @@ this.brow_angle=40
      pop()
         
     }
-  };
+  };  
 
 
   this.drawEyebrowPips_right = function(segment) {
@@ -329,7 +326,7 @@ this.brow_angle=40
         push()
         translate(px,py)
  rotate(this.brow_angle)
-scale(1.5)
+       scale(1.5)
         bezier(0 - this.seed_SizeX / 2, 0 + this.seed_SizeY / 2,
        0- this.seed_SizeX * 2, 0- this.seed_SizeY,
         0 + this.seed_SizeX, 0- this.seed_SizeY,
