@@ -7,7 +7,7 @@
 var DEBUG_MODE = true;
 
 // this can be used to set the number of sliders to show
-var NUM_SLIDERS = 3;
+var NUM_SLIDERS = 8;
 
 // other variables can be in here too
 // here's some examples for colors used
@@ -79,7 +79,7 @@ this.DrawLeaf = function(positions){
     
     // positions.nose_tip[1][1]*300
     
-    console.log(this.leafhight)
+    console.log(this.leaf_direction)
     // translate(this. behind_head_X,this.strawberry_forehead_Y-0.5)
     translate(0,0)
     
@@ -127,9 +127,10 @@ this.DrawLeaf = function(positions){
 
 
 
-    this.leaf_direction=this.leaf_direction_value
+    this.leaf_direction=map(this.leaf_direction_value,-90,90,-30,30)
     push()
-    // translate(this. behind_head_X,this.strawberry_forehead_Y-0.5)
+    translate(this. behind_head_X,this.strawberry_forehead_Y)
+
 
     rotate( this.leaf_direction)
     this.DrawLeaf(positions)
@@ -396,7 +397,7 @@ this.brow_angle=40
     this.leaf_width_value = map(settings[0], 0, 100, 0.5, 1);
     this.leaf_height_value = map(settings[1], 0, 100, 0.5, 1);
     this.mouth_size = map(settings[2], 0, 100, 0.5, 4);
-    this.leaf_direction_value=map(settings[3], 0,100,0,90);
+    this.leaf_direction_value=map(settings[3], 0,100,-90,90);
   }
 
   /* get internal properties as list of numbers 0-100 */
