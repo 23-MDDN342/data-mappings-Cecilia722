@@ -396,12 +396,12 @@ this.brow_angle=40
     this.leaf_width_value = map(settings[0], 0, 100, 0.5, 1);
     this.leaf_height_value = map(settings[1], 0, 100, 0.5, 1);
     this.mouth_size = map(settings[2], 0, 100, 0.5, 4);
-    this.leaf_direction_value=map(settings[3],0,100,-90,90);
+    this.leaf_direction_value=map(settings[3], 0,100,0,90);
   }
 
   /* get internal properties as list of numbers 0-100 */
   this.getProperties = function() {
-    let settings = new Array(4);
+    let settings = new Array(3);
     settings[0] = map(this.leaf_width_value, 0.5, 1, 0, 100);
     settings[1] = map(this.leaf_height_value, 0.5, 1, 0, 100);
     settings[2] = map(this.mouth_size, 0.5, 4, 0, 100);
