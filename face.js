@@ -54,8 +54,68 @@ function Face() {
   this.chinColour = [153, 153, 51]
   this.lipColour = [136, 68, 68]
   this.eyebrowColour = color_Brown
+  this.leaf_height_value = 0.6
 
+  this.leaf_width_value = 0.6
+  this.leaf_direction_value=0
+this.DrawLeaf = function(positions){
 
+    //leaves on top  -----------------------------------------------------
+
+    push()
+    strokeWeight(0.3)
+        fill(color_DarkGreen)
+        stroke(color_DarkGreen)
+     let heart_H=-segment_average(positions.left_eyebrow)[1]-segment_average(positions.left_eyebrow)[1]/2
+     let heart_W=segment_average(positions.right_eyebrow)[1]*2
+    
+    this.leafhight  =this.leaf_height_value*positions.nose_bridge[2][0]*-6
+    this.leaf_width=this.leaf_width_value*positions.nose_bridge[2][0]*1.5
+    this.leaf_Xpoints_fac=0
+    this.leaf_Ypoints_fac=-1
+    this.leaf_rotation= 60
+    this. behind_head_X=+positions.chin[0][0]+positions.chin[16][0]
+    
+    
+    // positions.nose_tip[1][1]*300
+    
+    console.log(this.leafhight)
+    // translate(this. behind_head_X,this.strawberry_forehead_Y-0.5)
+    translate(0,0)
+    
+    if(this.leafhight < 0.6){
+    
+      this.leafhight =0.6
+    }
+    
+    if(this.leafhight > 1.5){
+    
+      this.leafhight = 1.5
+    }
+    
+     quad(this.leaf_Xpoints_fac, -this.leafhight*2, 
+      this.leaf_Xpoints_fac+this.leaf_width, this.leaf_Ypoints_fac-this.leaf_width/2, 
+      this.leaf_Xpoints_fac,   this.leaf_Xpoints_fac,
+      this.leaf_Xpoints_fac-this.leaf_width, this.leaf_Ypoints_fac-this.leaf_width/2,);
+    
+    
+     rotate(this.leaf_rotation)
+     quad(this.leaf_Xpoints_fac, -this.leafhight*2, 
+      this.leaf_Xpoints_fac+this.leaf_width, this.leaf_Ypoints_fac-this.leaf_width/2, 
+      this.leaf_Xpoints_fac,   this.leaf_Xpoints_fac,
+      this.leaf_Xpoints_fac-this.leaf_width, this.leaf_Ypoints_fac-this.leaf_width/2,);
+    
+    
+    
+    rotate(-2*this.leaf_rotation)  
+    quad(this.leaf_Xpoints_fac, -this.leafhight*2, 
+      this.leaf_Xpoints_fac+this.leaf_width, this.leaf_Ypoints_fac-this.leaf_width/2, 
+      this.leaf_Xpoints_fac,   this.leaf_Xpoints_fac,
+      this.leaf_Xpoints_fac-this.leaf_width, this.leaf_Ypoints_fac-this.leaf_width/2,);
+    
+    
+     pop()
+} 
 
  
   this.draw = function(positions) {
@@ -64,61 +124,17 @@ function Face() {
 
     ellipseMode(CENTER);
     strokeJoin(ROUND)
-       //leaves on top  -----------------------------------------------------
 
-       push()
-       strokeWeight(0.3)
-           fill(color_DarkGreen)
-           stroke(color_DarkGreen)
-        let heart_H=-segment_average(positions.left_eyebrow)[1]-segment_average(positions.left_eyebrow)[1]/2
-        let heart_W=segment_average(positions.right_eyebrow)[1]*2
-       
-       this.leafhight  =this.leaf_height_value*positions.nose_bridge[2][0]*-6
-       this.leaf_width=this.leaf_width_value*positions.nose_bridge[2][0]*1.5
-       this.leaf_Xpoints_fac=0
-       this.leaf_Ypoints_fac=-1
-       this.leaf_rotation= 60
-       this. behind_head_X=+positions.chin[0][0]+positions.chin[16][0]
-       
-       
-       // positions.nose_tip[1][1]*300
-       
-       console.log(this.leafhight)
-       translate(this. behind_head_X,this.strawberry_forehead_Y-0.5)
-       
-       if(this.leafhight < 0.6){
-       
-         this.leafhight =0.6
-       }
-       
-       if(this.leafhight > 1.5){
-       
-         this.leafhight = 1.5
-       }
-       
-        quad(this.leaf_Xpoints_fac, -this.leafhight*2, 
-         this.leaf_Xpoints_fac+this.leaf_width, this.leaf_Ypoints_fac-this.leaf_width/2, 
-         this.leaf_Xpoints_fac,   this.leaf_Xpoints_fac,
-         this.leaf_Xpoints_fac-this.leaf_width, this.leaf_Ypoints_fac-this.leaf_width/2,);
-       
-       
-        rotate(this.leaf_rotation)
-        quad(this.leaf_Xpoints_fac, -this.leafhight*2, 
-         this.leaf_Xpoints_fac+this.leaf_width, this.leaf_Ypoints_fac-this.leaf_width/2, 
-         this.leaf_Xpoints_fac,   this.leaf_Xpoints_fac,
-         this.leaf_Xpoints_fac-this.leaf_width, this.leaf_Ypoints_fac-this.leaf_width/2,);
-       
-       
-       
-       rotate(-2*this.leaf_rotation)  
-       quad(this.leaf_Xpoints_fac, -this.leafhight*2, 
-         this.leaf_Xpoints_fac+this.leaf_width, this.leaf_Ypoints_fac-this.leaf_width/2, 
-         this.leaf_Xpoints_fac,   this.leaf_Xpoints_fac,
-         this.leaf_Xpoints_fac-this.leaf_width, this.leaf_Ypoints_fac-this.leaf_width/2,);
-       
-       
-        pop()
- 
+
+
+    this.leaf_direction=this.leaf_direction_value
+    push()
+    // translate(this. behind_head_X,this.strawberry_forehead_Y-0.5)
+
+    rotate( this.leaf_direction)
+    this.DrawLeaf(positions)
+
+     pop()
 
     // triangleMode(CENTER)
     stroke(color_Carmine);
@@ -380,14 +396,16 @@ this.brow_angle=40
     this.leaf_width_value = map(settings[0], 0, 100, 0.5, 1);
     this.leaf_height_value = map(settings[1], 0, 100, 0.5, 1);
     this.mouth_size = map(settings[2], 0, 100, 0.5, 4);
+    this.leaf_direction_value=map(settings[3],0,100,-90,90);
   }
 
   /* get internal properties as list of numbers 0-100 */
   this.getProperties = function() {
-    let settings = new Array(3);
-    settings[0] = map(  this.leaf_width_value, 0.5, 1, 0, 100);
+    let settings = new Array(4);
+    settings[0] = map(this.leaf_width_value, 0.5, 1, 0, 100);
     settings[1] = map(this.leaf_height_value, 0.5, 1, 0, 100);
     settings[2] = map(this.mouth_size, 0.5, 4, 0, 100);
+    settings[3]=map(this.leaf_direction_value,-90,90,0,100);
     return settings;
   }
 }
