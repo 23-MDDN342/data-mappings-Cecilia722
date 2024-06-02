@@ -123,13 +123,9 @@ function Face() {
 
 
     push()
-    stroke(color_Carmine);
-
-    strokeWeight(1)
-
-    fill(color_Carmine);
 
 
+    strokeCap(ROUND);
     beginShape();
 
     this.strawberry_forehead_Y = positions.chin[8][1] - 3.3
@@ -189,88 +185,90 @@ function Face() {
 
   }
 
-  
 
 
-  this.DrawCuteEye=function(positions){
-    this.eye_size = map(this.eye_size_value, 0, 100, 1, 1.4)*this.eye_open*6
-      this.eye_open=(positions.left_eye)[5][1]-(positions.left_eye)[2][1]
-      
-      noStroke()
-      push()
-      ellipseMode(CENTER);
-      rectMode(CENTER)
-      fill(color_Brown)
 
 
-      rect(0, 0 , 0.75, 0.8 * this.eye_size, 0.3 * this.eye_size);
-      fill("#4f0d02")
+  this.DrawCuteEye = function (positions) {
+    this.eye_size = map(this.eye_size_value, 0, 100, 1, 1.4) * this.eye_open * 6
+    this.eye_open = (positions.left_eye)[5][1] - (positions.left_eye)[2][1]
 
-      fill("#381d46");
-
-
-      rect(0, 0 , 0.6, 0.6 * this.eye_size, 0.3 * this.eye_size);
-      fill("#180925")
-      rect(0, 0 , 0.3 * this.eye_size, 0.3 * this.eye_size, 0.3 * this.eye_size);
-push()
-      translate(0, 0 +this.eye_size / 10)
-
-      fill("#f1a2f8")
-      ellipse(0 + 0.04, 0  + 0.21, 0.2, 0.15*this.eye_size);
-      fill(color_White)
-      ellipse(0+ 0.05, 0  + 0.2, 0.15, 0.1*this.eye_size)
-pop()
+    noStroke()
+    push()
+    ellipseMode(CENTER);
+    rectMode(CENTER)
+    fill(color_Brown)
 
 
-      // translate(this.left_eye_pos[0], this.left_eye_pos[1])
+    rect(0, 0, 0.75, 0.8 * this.eye_size, 0.3 * this.eye_size);
+    fill("#4f0d02")
 
-      translate(0, 0-this.eye_size / 10)
-      rotate(30)
-      fill(color_White)
-      ellipse(0, -0.2, 0.3, 0.16*this.eye_size);
-      ellipse(0,-0.0, 0.13, 0.09*this.eye_size);
-      pop()
-
-      push()
-      translate(0.1,  -this.eye_size / 10)
-      rotate(-30)
+    fill("#381d46");
 
 
-      fill("#d2fefe")
-      ellipse(-0.24, 0  - 0.19, 0.13, 0.1*this.eye_size);
-      rotate(40)
-      ellipse(0 - 0.24, 0  + 0.12, 0.1, 0.06*this.eye_size);
-      pop()
+    rect(0, 0, 0.6, 0.6 * this.eye_size, 0.3 * this.eye_size);
+    fill("#180925")
+    rect(0, 0, 0.3 * this.eye_size, 0.3 * this.eye_size, 0.3 * this.eye_size);
+    push()
+    translate(0, 0 + this.eye_size / 10)
+
+    fill("#f1a2f8")
+    ellipse(0 + 0.04, 0 + 0.21, 0.2, 0.15 * this.eye_size);
+    fill(color_White)
+    ellipse(0 + 0.05, 0 + 0.2, 0.15, 0.1 * this.eye_size)
+    pop()
+
+
+    // translate(this.left_eye_pos[0], this.left_eye_pos[1])
+
+    translate(0, 0 - this.eye_size / 10)
+    rotate(30)
+    fill(color_White)
+    ellipse(0, -0.2, 0.3, 0.16 * this.eye_size);
+    ellipse(0, -0.0, 0.13, 0.09 * this.eye_size);
+    pop()
+
+    push()
+    translate(0.1, -this.eye_size / 10)
+    rotate(-30)
+
+
+    fill("#d2fefe")
+    ellipse(-0.24, 0 - 0.19, 0.13, 0.1 * this.eye_size);
+    rotate(40)
+    ellipse(0 - 0.24, 0 + 0.12, 0.1, 0.06 * this.eye_size);
+    pop()
 
 
   }
 
 
-this.DrawSeed=function(positions){
+  this.DrawSeed = function (positions) {
 
-  this.seed_SizeX = segment_average(positions.left_eyebrow)[1] / 9
-  this.seed_SizeY = segment_average(positions.left_eyebrow)[0] / 6
-
-
-  bezier(0 - this.seed_SizeX / 2, 0 + this.seed_SizeY / 2,
-  0 - this.seed_SizeX * 2, 0 - this.seed_SizeY,
-  0 + this.seed_SizeX, 0 - this.seed_SizeY,
-  0 - this.seed_SizeX / 2, 0 + this.seed_SizeY / 2);
+    this.seed_SizeX = segment_average(positions.left_eyebrow)[1] / 9
+    this.seed_SizeY = segment_average(positions.left_eyebrow)[0] / 6
 
 
+    bezier(0 - this.seed_SizeX / 2, 0 + this.seed_SizeY / 2,
+      0 - this.seed_SizeX * 2, 0 - this.seed_SizeY,
+      0 + this.seed_SizeX, 0 - this.seed_SizeY,
+      0 - this.seed_SizeX / 2, 0 + this.seed_SizeY / 2);
 
 
 
-}
 
 
-  
+  }
+
+
+
   this.draw = function (positions) {
     console.log()
     // head
 
     ellipseMode(CENTER);
     strokeJoin(ROUND)
+    strokeCap(ROUND);
 
 
 
@@ -283,34 +281,85 @@ this.DrawSeed=function(positions){
     pop()
 
     push()
+    stroke(color_Carmine);
+    strokeWeight(1)
+    fill(color_Carmine);
     this.DrawBerryBase(positions)
     pop()
 
 
     this.left_eye_pos = segment_average(positions.left_eye)
     this.right_eye_pos = segment_average(positions.right_eye);
-    this. eye_hight=map(this.eye_hight_value,0,100,0.6,1.2)
- 
+    this.eye_hight = map(this.eye_hight_value, 0, 100, 0.6, 1.2)
+
+
+    push()
+    translate((positions.left_eyebrow)[1][0] + 0.7, (positions.left_eyebrow)[4][1] + 1)
+    scale(0.3)
+    this.highlightSize = 0.7
+    this.highlight_Level = 11
+
+    for (let i = 0; i < this.highlight_Level; i++) {
+      translate((positions.left_eyebrow)[1][0] + 0.7, (positions.left_eyebrow)[4][1] + 1)
+
+
+      strokeWeight(8)
+      scale(this.highlightSize)
+      // stroke(190, 140, 104, 40);
+      stroke(190, 104, 104, 30);
+      noFill()
+
+      this.DrawBerryBase(positions)
+
+    }
+    pop()
+
+
+    push()
+    // this.strawberry_forehead_Y = positions.chin[8][1] - 3.3
+    // translate((positions.left_eyebrow)[1][0] + 0.7, (positions.left_eyebrow)[4][1] + 1)
+      translate(positions.chin[8][0] ,   this.strawberry_forehead_Y+ this.shade_scale+0.7)
+    scale(0.4)
+
+    this.highlight_Level = 11
+    this.shade_scale=0.9
+
+    for (let i = 0; i < this.highlight_Level; i++) {
+      translate(positions.chin[8][0] ,   this.strawberry_forehead_Y )
+
+
+      strokeWeight(8)
+      scale(   this.shade_scale,   this.shade_scale-0.2)
+      stroke(190, 104, 104, 30);
+      noFill()
+
+      this.DrawBerryBase(positions)
+
+    }
+    pop()
+
+
+
 
     push()
     //strawberry this.seeds
-    this.seed_Number = int(random(3,6))
-    this.seed_Angle = random(-20,20)
+    this.seed_Number = int(random(3, 6))
+    this.seed_Angle = random(-20, 30)
     this.seed_x = this.left_eye_pos[0]
     this.seed_y = this.left_eye_pos[1]
     noStroke()
     fill(color_RoseWood)
-    translate( this.seed_x-0.2,  this.seed_y+1.5)
+    translate(this.seed_x - 0.2, this.seed_y + 1.5)
 
     for (let i = 0; i < this.seed_Number; i++) {
 
       rotate(this.seed_Angle)
 
-      translate( this.seed_x/3,  this.seed_y/3)
+      translate(this.seed_x / 3, this.seed_y / 3)
 
       this.DrawSeed(positions)
 
-      rotate(random(320/ this.seed_Number,350/ this.seed_Number))
+      rotate(random(320 / this.seed_Number, 350 / this.seed_Number))
 
     }
     pop()
@@ -319,21 +368,21 @@ this.DrawSeed=function(positions){
     push()
     //strawberry this.seeds
 
-    this.seed_x_2= this.right_eye_pos[0]
-    this.seed_y_2= this.right_eye_pos[1]
+    this.seed_x_2 = this.right_eye_pos[0]
+    this.seed_y_2 = this.right_eye_pos[1]
     noStroke()
     fill(color_RoseWood)
-    translate(     this.seed_x_2+0.2, this.seed_y_2+1.5)
+    translate(this.seed_x_2 + 0.2, this.seed_y_2 + 1.5)
 
     for (let i = 0; i < this.seed_Number; i++) {
 
       rotate(this.seed_Angle)
 
-      translate(     -this.seed_x_2/3,  this.seed_y_2/3)
+      translate(-this.seed_x_2 / 3, this.seed_y_2 / 3)
 
       this.DrawSeed(positions)
 
-      rotate(random(320/ this.seed_Number,350/ this.seed_Number))
+      rotate(random(320 / this.seed_Number, 350 / this.seed_Number))
 
     }
     pop()
@@ -350,33 +399,33 @@ this.DrawSeed=function(positions){
 
     // this.eye_switch = 1
 
-    this.eye_switch =int(this.eye_switch_value)
+    this.eye_switch = int(this.eye_switch_value)
     // tow round eyes
     if (this.eye_switch == 1 || this.eye_switch == 3) {
-push()
-translate(this.left_eye_pos[0], this.left_eye_pos[1]+ this. eye_hight)
+      push()
+      translate(this.left_eye_pos[0], this.left_eye_pos[1] + this.eye_hight)
       this.DrawCuteEye(positions)
 
-pop()
+      pop()
 
-push()
-translate(this.right_eye_pos[0], this.right_eye_pos[1]+ this. eye_hight)
+      push()
+      translate(this.right_eye_pos[0], this.right_eye_pos[1] + this.eye_hight)
       this.DrawCuteEye(positions)
 
-pop()
+      pop()
     }
 
 
     if (this.eye_switch == 2) {
-translate(0,0)
+      translate(0, 0)
       fill(color_Brown);
 
       stroke(color_Brown)
-      strokeWeight(0,1)
+      strokeWeight(0, 1)
 
 
-      arc(this.left_eye_pos[0], this.left_eye_pos[1]+this. eye_hight , 0.6, 0.5, 0, 180, CHORD);
-      arc(this.right_eye_pos[0], this.right_eye_pos[1]+this. eye_hight , 0.6, 0.5, 0, 180, CHORD);
+      arc(this.left_eye_pos[0], this.left_eye_pos[1] + this.eye_hight, 0.6, 0.5, 0, 180, CHORD);
+      arc(this.right_eye_pos[0], this.right_eye_pos[1] + this.eye_hight, 0.6, 0.5, 0, 180, CHORD);
 
       noStroke()
       fill(color_IndianRed);
@@ -463,31 +512,31 @@ translate(0,0)
 
   // example of a function *inside* the face object.
   // this draws a segment, and do_loop will connect the ends if true
-  // this.draw_segment = function (segment, do_loop) {
+  this.draw_segment = function (segment, do_loop) {
 
-  //   for (let i = 0; i < segment.length; i++) {
-  //     let px = segment[i][0];
-  //     let py = segment[i][1];
-  //     ellipse(px, py, 0.1);
-  //     if (i < segment.length - 1) {
-  //       let nx = segment[i + 1][0];
-  //       let ny = segment[i + 1][1];
-  //       line(px, py, nx, ny);
-  //     }
-  //     else if (do_loop) {
-  //       let nx = segment[0][0];
-  //       let ny = segment[0][1];
-  //       line(px, py, nx, ny);
-  //     }
-  //   }
+    for (let i = 0; i < segment.length; i++) {
+      let px = segment[i][0];
+      let py = segment[i][1];
+      ellipse(px, py, 0.1);
+      if (i < segment.length - 1) {
+        let nx = segment[i + 1][0];
+        let ny = segment[i + 1][1];
+        line(px, py, nx, ny);
+      }
+      else if (do_loop) {
+        let nx = segment[0][0];
+        let ny = segment[0][1];
+        line(px, py, nx, ny);
+      }
+    }
 
-  // };
+  };
   this.brow_angle = 40
 
   this.drawEyebrowPips_left = function (segment) {
     for (let i = 4; i < segment.length; i++) {
       let px = segment[i][0];
-      let py = segment[i][1] +0.5
+      let py = segment[i][1] + 0.5
 
       fill(color_Yellow)
       // ellipse(px, py, 0.1);
@@ -508,7 +557,7 @@ translate(0,0)
   this.drawEyebrowPips_right = function (segment) {
     for (let i = 0; i < segment.length - 4; i++) {
       let px = segment[i][0];
-      let py = segment[i][1] + 0.5-0.1
+      let py = segment[i][1] + 0.5 - 0.1
 
       fill(color_Yellow)
       // ellipse(px, py, 0.1);
@@ -535,7 +584,7 @@ translate(0,0)
     this.leaf_direction_value = map(settings[4], 0, 100, -90, 90);
     this.eye_switch_value = map(settings[5], 0, 100, 1, 3)
     this.eye_size_value = map(settings[6], 0, 100, 0, 100)
-    this.eye_hight_value=map(settings[7],0,100,0,100)
+    this.eye_hight_value = map(settings[7], 0, 100, 0, 100)
   }
 
   /* get internal properties as list of numbers 0-100 */
@@ -548,7 +597,7 @@ translate(0,0)
     settings[4] = map(this.leaf_direction_value, -90, 90, 0, 100);
     settings[5] = map(this.eye_switch_value, 1, 3, 0, 100)
     settings[6] = map(this.eye_size_value, 0, 100, 0, 100)
-    settings[7]=map(this.eye_hight_value,0,100,0,100)
+    settings[7] = map(this.eye_hight_value, 0, 100, 0, 100)
     return settings;
   }
 }
