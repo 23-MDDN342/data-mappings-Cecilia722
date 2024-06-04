@@ -11,6 +11,8 @@ Training:
 During training, I found that because the samples were all from fashion magazines, most of the photos had similar expressions, with few showing squinted or relaxed eyes. This prevented me from training the AI to switch between different functions based on facial expressions. Additionally, the mouths and smiles were very standardized, and these celebrities' appearances mostly belonged to "standard faces" with not much distinctiveness, making the strawberry shape variations less noticeable. If the training samples were more representative of ordinary people, I think it would be more interesting and I could do more.
 Moreover, I found that the AI could not recognize faces with closed eyes, which rendered my function for switching eye shapes completely ineffective. I did use half-open eyes during training, but there were only a few photos with such expressions, so the training volume was insufficient.
 
+As for the rotation of the leaves, the AI performed very well. I changed the rotation angle of the leaves based on the orientation of the person's face, making it look like it's in a 3D space. The AI learned this quickly.
+
 Summary:
 The learning process this time was quite interesting for me. However, my drawing style is relatively cartoonish and flat, so if the training photos were more diverse, I believe I could produce more differentiated results.
 
