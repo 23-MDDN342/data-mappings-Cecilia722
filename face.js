@@ -32,8 +32,8 @@ function segment_average(segment) {
 // This where you define your own face object
 function Face() {
 
-  let color_DarkGreen = color("#42421c")
-  let color_ResedaGreen = color("#84805a")
+  let color_DarkGreen = color("#84805a")
+
   let color_Tan = color("#d4b48c")
   let color_IndianRed = color("#bd6868")
   let color_Carmine = color("#950a1e")
@@ -531,6 +531,8 @@ function Face() {
     for (let i = 0; i < segment.length; i++) {
       let px = segment[i][0];
       let py = segment[i][1];
+      noFill()
+      noStroke()
       ellipse(px, py, 0.1);
       if (i < segment.length - 1) {
         let nx = segment[i + 1][0];
